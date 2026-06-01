@@ -1,0 +1,48 @@
+# Orientado a Objetos 01 - Venta de Videojuegos
+
+class VentaVideojuego:
+
+    def __init__(self, consola, valor):
+        self.consola = consola
+        self.valor = valor
+
+    def calcular_venta(self):
+        return self.valor
+
+
+def main():
+
+    ventas = []
+
+    cantidad_ventas = int(
+        input("Digite la cantidad de ventas realizadas: ")
+    )
+
+    for i in range(cantidad_ventas):
+
+        print(f"\nVenta {i + 1}")
+
+        consola = input("Digite el tipo de consola: ")
+        valor = float(input("Digite el valor del videojuego: "))
+
+        venta = VentaVideojuego(consola, valor)
+
+        ventas.append(venta)
+
+    total_dia = sum(
+        venta.calcular_venta()
+        for venta in ventas
+    )
+
+    print(f"\nTotal vendido del día: {total_dia}")
+
+    print("\nRegistro de ventas:")
+
+    for venta in ventas:
+        print(
+            f"Consola: {venta.consola} - Valor: {venta.valor}"
+        )
+
+
+if __name__ == "__main__":
+    main()
