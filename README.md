@@ -114,3 +114,47 @@ Con esta información, el software calculará tanto el valor de cada venta como 
 - La venta queda registrada en el sistema.
 - El total de ventas del día se actualiza correctamente.
 - La información queda disponible para consultas posteriores.
+
+# Pseudocodigo
+
+Proceso VentaVideojuegos
+
+    Definir tipoVideojuego, continuar Como Cadena
+    Definir valorVenta, totalDia Como Real
+
+    totalDia <- 0
+    continuar <- "S"
+
+    Mientras continuar = "S" Hacer
+
+        Escribir "Ingrese tipo de videojuego (PS4, PS5 o NS): "
+        Leer tipoVideojuego
+
+        Si tipoVideojuego = "PS4" O tipoVideojuego = "PS5" O tipoVideojuego = "NS" Entonces
+
+            Escribir "Ingrese valor del videojuego: "
+            Leer valorVenta
+
+            Si valorVenta > 0 Entonces
+
+                totalDia <- totalDia + valorVenta
+
+                Escribir "Venta registrada correctamente"
+                Escribir "Valor de la venta: $", valorVenta
+
+            SiNo
+                Escribir "Valor inválido"
+            FinSi
+
+        SiNo
+            Escribir "Tipo de videojuego inválido"
+        FinSi
+
+        Escribir "¿Desea registrar otra venta? (S/N)"
+        Leer continuar
+
+    FinMientras
+
+    Escribir "Total vendido en el día: $", totalDia
+
+FinProceso
