@@ -1,0 +1,31 @@
+# Estructurado_01 - Venta de Videojuegos
+
+tipos_consola = []
+valores_juegos = []
+
+cantidad_ventas = int(input("Digite la cantidad de ventas realizadas: "))
+
+for i in range(cantidad_ventas):
+    print(f"\nVenta {i + 1}")
+
+    consola = input("Digite el tipo de consola (PS4, PS5 o NS): ")
+    valor = float(input("Digite el valor del videojuego: "))
+
+    tipos_consola.append(consola)
+    valores_juegos.append(valor)
+
+total_ventas = 0
+
+for i in range(cantidad_ventas):
+    total_ventas += valores_juegos[i]
+
+print("\nEl total vendido en el día es:", total_ventas)
+
+print("\nRegistro de ventas:")
+for i in range(cantidad_ventas):
+    print(
+        "Consola:",
+        tipos_consola[i],
+        "- Valor:",
+        valores_juegos[i]
+    )
