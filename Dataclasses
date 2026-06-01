@@ -1,0 +1,82 @@
+from dataclasses import dataclass
+
+@dataclass
+class VentaVideojuego:
+
+    consola: str
+    valor: float
+
+    def calcular_venta(self) -> float:
+        return self.valor
+
+
+def leer_numero(mensaje, tipo=float):
+
+    while True:
+
+        try:
+
+            valor = tipo(input(mensaje))
+
+            if valor < 0:
+                print("El valor no puede ser negativo")
+                continue
+
+            return valor
+
+        except ValueError:
+            print("Entrada inválida")
+
+
+def crear_venta() -> VentaVideojuego:
+
+    consola = input(
+        "Digite el tipo de consola (PS4, PS5 o NS): "
+    )
+
+    valor = leer_numero(
+        "Digite el valor del videojuego: "
+    )
+
+    return VentaVideojuego(consola, valor)
+
+
+def calcular_total(ventas: list[VentaVideojuego]) -> float:
+
+    return sum(
+        venta.calcular_venta()
+        for venta in ventas
+    )
+
+
+def main():
+
+    ventas: list[VentaVideojuego] = []
+
+    cantidad_ventas = leer_numero(
+        "Digite la cantidad de ventas: ",
+        int
+    )
+
+    for i in range(cantidad_ventas):
+
+        print(f"\nVenta {i + 1}")
+
+        ventas.append(crear_venta())
+
+    total_dia = calcular_total(ventas)
+
+    print(f"\nTotal vendido del día: {total_dia}")
+
+    print("\nRegistro de ventas:")
+
+    for venta in ventas:
+
+        print(
+            f"Consola: {venta.consola} - "
+            f"Valor: {venta.valor}"
+        )
+
+
+if __name__ == "__main__":
+    main()
